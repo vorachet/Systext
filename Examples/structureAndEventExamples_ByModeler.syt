@@ -1,21 +1,21 @@
-// Systext is a domain-specific language for systems modeling and tradeoff analysis 
-// developed as a research project from School of Information Technology, 
+// Systext is a domain-specific language for systems modeling and tradeoff analysis
+// developed as a research project from School of Information Technology,
 // King Mongkut's University of Technology Thonburi. (https://www.sit.kmutt.ac.th/en/)
 
 @Model PillcamModel
 
 PillcamApplication {
-	 detectEsophagealDiseases() {}
-	 detectGastrointestinalReflexDiseases() {}
-	 detectBarreffEsophagus() {}
-	 detectCrohnDisease() {}
-	 detectSmallBowel() {}
-     detectTumors() {}
-     detectSmallBowelInjury() {}
-     detectCeliacDisease() {}
-     detectUlcerative() {}
-     detectColitis() {}
-     uses solution:DisposablePillCam [1..-1]
+	detectEsophagealDiseases() {}
+	detectGastrointestinalReflexDiseases() {}
+	detectBarreffEsophagus() {}
+	detectCrohnDisease() {}
+	detectSmallBowel() {}
+  detectTumors() {}
+  detectSmallBowelInjury() {}
+  detectCeliacDisease() {}
+  detectUlcerative() {}
+  detectColitis() {}
+  uses solution:DisposablePillCam [1..-1]
 }
 DisposablePillCam {
 	String developer "http://pillcamcolon.com/"
@@ -30,77 +30,46 @@ DisposablePillCam {
 	contains transmitter:ASICTransmitter [1..1]
 	contains antennae:Antennae [1..1]
 }
-
-OpticalDome {
-	
-}   
-LensHolder {
-	
-} 
-Lens {
-	
-}
-LEDLight {
-	
-}
-CMOSImageSensor {
-	
-}
-Battery {
-	
-}
+OpticalDome {}
+LensHolder {}
+Lens {}
+LEDLight {}
+CMOSImageSensor {}
+Battery {}
 ASICTransmitter {}
-Antennae {
-	
-}
+Antennae {}
 Doctor {
 	examColon() {}
-	getImages() {}  
+	getImages() {}
 	uses technology:PillcamApplication [1..1]
-	uses pillCAMs:DisposablePillCam [1..-1] 
+	uses pillCAMs:DisposablePillCam [1..-1]
 	uses recordingDevice:WirelessImgRecorder [1..1]
-	has patients:Patient [1..-1] 
-} 
-ImageOverRFCommunication {}   
+	has patients:Patient [1..-1]
+}
+ImageOverRFCommunication {}
 WirelessImgRecorder {
 	receiveImages() {}
-  	showImages() {}   
-}       
-Patient { 
-	swallow() {} 
+  	showImages() {}
+}
+Patient {
+	swallow() {}
 }
 Image{}
-SignalEvent Doctor.examColon() 
- > DisposablePillCam > Patient.swallow()
-SignalEvent DisposablePillCam.captureAndSendImages() 
- > ImageOverRFCommunication > WirelessImgRecorder.receiveImages()
-CallEvent Doctor.getImages() 
- > Image > WirelessImgRecorder.showImages()
 
-WholeSystemView = createStructureView( 
-	PillcamApplication
-	DisposablePillCam
-	Patient      
-	Doctor
-	WirelessImgRecorder
-	ImageOverRFCommunication
-	Image
-	OpticalDome
-	LensHolder
-	Lens 
-	LEDLight
-	CMOSImageSensor
-	Battery
-	ASICTransmitter Antennae
+SignalEvent Doctor.examColon() > DisposablePillCam > Patient.swallow()
+SignalEvent DisposablePillCam.captureAndSendImages() > ImageOverRFCommunication > WirelessImgRecorder.receiveImages()
+CallEvent Doctor.getImages() > Image > WirelessImgRecorder.showImages()
+
+WholeSystemView = createStructureView(
+	PillcamApplication DisposablePillCam Patient  Doctor
+	WirelessImgRecorder  ImageOverRFCommunication Image OpticalDome
+	LensHolder Lens LEDLight CMOSImageSensor
+	Battery ASICTransmitter Antennae
 )
 
 TechnologyApplicationContext = createStructureView(
-	DisposablePillCam
-	Patient      
-	Doctor
-	WirelessImgRecorder
-	ImageOverRFCommunication
-	Image
+	DisposablePillCam Patient Doctor WirelessImgRecorder
+	ImageOverRFCommunication Image
 )
 DoctorEvents = createEventView(Doctor)
 PatientEvents = createEventView(Patient)
