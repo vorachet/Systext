@@ -1,12 +1,22 @@
-# Systext
+# Systext (Temporary repository)
 
 Systext is a textual domain-specific language for systems modeling and tradeoff analysis developed as a research project from [School of Information Technology, King Mongkut's University of Technology Thonburi](https://www.sit.kmutt.ac.th/en/)
 
 The main design goal of Systext is to provide lightweight systems modeling that allows users to perform the following system modeling tasks
 
-* modeling structure and behavior
-* modeling finite state machine
-* modeling constraints and tradeoff analysis
+Definition Models
+
+* structure and behavior
+* finite state machine
+* constraints and constraint blocks (the composition of constraints) with mathematical expressions, multiple output and shared inputs support
+
+Task Models
+
+* create structural view
+* create event view
+* create constraint view
+* create finite state machine
+* tradeoff analysis
 
 # Examples
 
