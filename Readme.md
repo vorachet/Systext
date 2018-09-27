@@ -1,13 +1,12 @@
 # Systext
 
-Systext is a textual domain-specific language for systems modeling and tradeoff analysis developed as a research project from School of Information Technology, King Mongkut's University of Technology Thonburi (https://www.sit.kmutt.ac.th/en/)
+Systext is a textual domain-specific language for systems modeling and tradeoff analysis developed as a research project from [School of Information Technology, King Mongkut's University of Technology Thonburi](https://www.sit.kmutt.ac.th/en/)
 
-The main design goal of Systext is to provide lightweight systems modeling that allows users to perform the following tasks
+The main design goal of Systext is to provide lightweight systems modeling that allows users to perform the following system modeling tasks
 
-* modeling systems structure and events
+* modeling structure and behavior
 * modeling finite state machine
-* modeling system constraints
-* tradeoff analysis
+* modeling constraints and tradeoff analysis
 
 # Examples
 
@@ -19,11 +18,9 @@ https://cdn.rawgit.com/vorachet/Systext/9ddf28b1/Examples/FSMSimulationDemoDoc.h
 
 ### Input
 
-```
-// Systext is a domain-specific language for systems modeling and tradeoff analysis
-// developed as a research project from School of Information Technology,
-// King Mongkut's University of Technology Thonburi. (https://www.sit.kmutt.ac.th/en/)
+[fsmExamples_ByModeler.syt](https://github.com/vorachet/Systext/blob/master/Examples/fsmExamples_ByModeler.syt)
 
+```
 @Model FSMExamplesByModeler
 Elevator {
     up() {}        down() {}
@@ -74,11 +71,9 @@ ElevatorFSMView = createFSMView(Elevator)
 
 ```
 
-```
-// Systext is a domain-specific language for systems modeling and tradeoff analysis
-// developed as a research project from School of Information Technology,
-// King Mongkut's University of Technology Thonburi. (https://www.sit.kmutt.ac.th/en/)
+[fsmExamples_ByUser.syt](https://github.com/vorachet/Systext/blob/master/Examples/fsmExamples_ByUser.syt)
 
+```
 @Model FSMExamplesByUser
 
 FSMSimulationDemoDoc = createDocument(
