@@ -1,10 +1,12 @@
-# Systext (Temporary repository)
+# Systext
 
 Systext is a textual domain-specific language for systems modeling and tradeoff analysis developed as a research project from [School of Information Technology, King Mongkut's University of Technology Thonburi](https://www.sit.kmutt.ac.th/en/)
 
 The main design goal of Systext is to provide lightweight systems modeling that allows users to perform the following system modeling tasks
 
-![Screenshot](images/screenshot1.jpg?raw=true "Screenshot")
+![Screenshot](Images/screenshot-structure.png?raw=true "Screenshot")
+
+![Screenshot](Images/screenshot-fsm.png?raw=true "Screenshot")
 
 # WIKI
 
