@@ -6,6 +6,8 @@ The main design goal of Systext is to provide lightweight systems modeling that 
 
 [Download DSL example files and outputs](https://github.com/vorachet/Systext/releases/tag/v0.1)
 
+=======
+>>>>>>> d3e49a2e809aed77c847cdfcf7b3b1c87df7d42d
 ## Structural Modeling
 ![Screenshot](Images/screenshot-structure.png?raw=true "Screenshot")
 
