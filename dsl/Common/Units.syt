@@ -1,0 +1,10 @@
+@Model Units
+
+@Unit MeterPerSecond "m/s"
+@Unit Second "sec"
+@Unit Meter "m"
+@Unit MeterPerSecondSquared  "m/s^2"
+@Unit Kilogam "kg"
+@Unit N "N" 
+@Unit UndefinedUnit "UndefinedUnit"   
+@Unit Logic "logic"

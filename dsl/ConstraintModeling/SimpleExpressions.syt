@@ -1,0 +1,142 @@
+@Model SimpleExpressions
+                    
+Dataset1 {    
+	Double a "20"
+	Double b "30"
+	Double c "40"
+	Double d "50"
+	Double e "60"
+	Double f "70"   
+	Double g "80"   
+}  
+  
+Dataset2 {
+	Double a "200"
+	Double b "300"
+	Double c "400"
+	Double d "500"
+	Double e "600"
+	Double f "700"
+	Double g "800"
+}  
+
+Dataset3 {
+	Double a "2000.25"
+	Double b "3000.18"
+	Double c "4000.63"
+	Double d "5000.4551"
+	Double e "6000.225"
+	Double f "7000.14585"
+	Double g "8000.1252"
+}    
+
+Dataset4_TestMissingParams {
+	Double c "40.63"
+	Double d "500.4551"
+	Double e "600.225"
+	Double f "700.14585"
+}        
+                      
+@Constraint AdditionEq  {         
+	output: x  = "a + b"    
+	input: a  input: b             
+}  
+
+@Constraint Addition3ArgsEq  {         
+	output: x  = "a + b + c"    
+	input: a  input: b  input: c             
+}                                   
+                            
+@Constraint SubtractionEq  {     
+	output: x = "a - b"  
+	input: a input: b  
+}                   
+                   
+@Constraint MultiplicationEq  {  
+	output: x = "a * b"  
+	input: a input: b 
+}                 
+
+@Constraint DivisionEq  {  
+	output: x = "a / b"  
+	input: a input: b 
+}                         
+       
+@ConstraintBlock C0 exportToHTML {    
+	output: x = 1:AdditionEq.x     
+	input: a = 1:AdditionEq.a
+	input: b = 1:AdditionEq.b     
+}  
+
+@ConstraintBlock C1 exportToHTML {    
+	output: x = 1:Addition3ArgsEq.x   
+	output: y = 2:AdditionEq.x  
+	input: a = 2:AdditionEq.a 1:Addition3ArgsEq.a
+	input: b = 2:AdditionEq.b 1:Addition3ArgsEq.b
+	"20" > 1:Addition3ArgsEq.c
+}  
+                  
+@ConstraintBlock C2 exportToHTML {    
+	output: x = 1:AdditionEq.x         
+	input: a = 2:SubtractionEq.a  
+	input: b = 2:SubtractionEq.b  
+	"15" > 1:AdditionEq.b
+	2:SubtractionEq.x > 1:AdditionEq.a    
+}                        
+                                 
+@ConstraintBlock C3 exportToHTML {  
+	output: x = 1:SubtractionEq.x   
+	input: a = 2:SubtractionEq.a    
+	input: b = 2:SubtractionEq.b  
+	input: c = 3:AdditionEq.a     
+	input: d = 3:AdditionEq.b  
+	2:SubtractionEq.x > 1:SubtractionEq.a    
+	3:AdditionEq.x > 1:SubtractionEq.b  
+}                                                                                                                                                     
+                                                   
+@ConstraintBlock C4 exportToHTML {       
+	output: x = 1:SubtractionEq.x     
+	output: y = 4:AdditionEq.x
+	input: a = 4:AdditionEq.a
+	input: b = 2:SubtractionEq.a 
+	input: c = 2:SubtractionEq.b
+	input: d = 3:AdditionEq.a      
+	input: e = 3:AdditionEq.b
+	input: f = 1:SubtractionEq.b   
+	"40" > 5:AdditionEq.b       
+	"100" > 4:AdditionEq.b      
+	2:SubtractionEq.x > 6:MultiplicationEq.a
+	3:AdditionEq.x > 6:MultiplicationEq.b  
+	6:MultiplicationEq.x > 5:AdditionEq.a   
+	5:AdditionEq.x > 1:SubtractionEq.a	  
+}                 
+                                                     
+@ConstraintBlock C5 exportToHTML {          
+	output: x = 1:SubtractionEq.x       
+	output: y = 4:AdditionEq.x  
+	output: z = 7:DivisionEq.x
+	input: a = 4:AdditionEq.a
+	input: b = 2:SubtractionEq.a 
+	input: c = 2:SubtractionEq.b
+	input: d = 3:AdditionEq.a            
+	input: e = 3:AdditionEq.b       
+	input: f = 1:SubtractionEq.b 
+	input: g = 7:DivisionEq.a   
+	"10" > 7:DivisionEq.a  
+	"20" > 8:AdditionEq.a     
+	"30" > 5:AdditionEq.b     
+	"40" > 4:AdditionEq.b
+	"50" > 8:AdditionEq.b
+	2:SubtractionEq.x > 6:MultiplicationEq.a  
+	3:AdditionEq.x > 6:MultiplicationEq.b  
+	6:MultiplicationEq.x > 5:AdditionEq.a   
+	5:AdditionEq.x > 1:SubtractionEq.a	
+	8:AdditionEq.x > 7:MultiplicationEq.b
+}  
+
+C0 = createTradeOffAnalysis(C0).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
+C1 = createTradeOffAnalysis(C1).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
+C2 = createTradeOffAnalysis(C2).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
+C3 = createTradeOffAnalysis(C3).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
+C4 = createTradeOffAnalysis(C4).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
+C5 = createTradeOffAnalysis(C5).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
