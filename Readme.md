@@ -8,6 +8,8 @@ The main design goal of Systext is to provide lightweight systems modeling that 
 
 ![Screenshot](Images/screenshot-fsm.png?raw=true "Screenshot")
 
+![Screenshot](Images/screenshot-constraint.png?raw=true "Screenshot")
+
 # WIKI
 
 The [wiki](https://github.com/vorachet/Systext/wiki) contains various resources for users, including a user manual and links to screencasts and scientific papers.
