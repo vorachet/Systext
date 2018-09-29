@@ -115,6 +115,7 @@ Dataset4_TestMissingParams {
 	output: x = 1:SubtractionEq.x       
 	output: y = 4:AdditionEq.x  
 	output: z = 7:DivisionEq.x
+	output: t = 6:MultiplicationEq.x
 	input: a = 4:AdditionEq.a
 	input: b = 2:SubtractionEq.a 
 	input: c = 2:SubtractionEq.b
@@ -122,16 +123,13 @@ Dataset4_TestMissingParams {
 	input: e = 3:AdditionEq.b       
 	input: f = 1:SubtractionEq.b 
 	input: g = 7:DivisionEq.a   
-	"10" > 7:DivisionEq.a  
-	"20" > 8:AdditionEq.a     
+	"10" > 7:DivisionEq.b  
 	"30" > 5:AdditionEq.b     
 	"40" > 4:AdditionEq.b
-	"50" > 8:AdditionEq.b
 	2:SubtractionEq.x > 6:MultiplicationEq.a  
 	3:AdditionEq.x > 6:MultiplicationEq.b  
 	6:MultiplicationEq.x > 5:AdditionEq.a   
 	5:AdditionEq.x > 1:SubtractionEq.a	
-	8:AdditionEq.x > 7:MultiplicationEq.b
 }  
 
 C0 = createTradeOffAnalysis(C0).setStudyElements(Dataset1 Dataset2 Dataset3 Dataset4_TestMissingParams).exportToHTML() 
