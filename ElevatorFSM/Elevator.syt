@@ -1,0 +1,41 @@
+package ElevatorFSM  {
+
+	class Elevator {  
+		func up() {}  
+		func down() {}       
+		func redOn() {}
+		func redOff() {}  
+		func greenOff() {}     
+		func greenOn() {}  
+		state Ground InitialState {
+			inputFunc: up outgoingState: First
+		 	runEntryFuncs: redOn greenOff       
+		}     
+		state First {         
+			inputFunc: down outgoingState: Ground   
+			runEntryFuncs: redOff greenOn  
+		}
+	}
+	generateMetaModelStructuralView(
+		filename: Elevator
+		Monochrome=true
+		packages: ElevatorFSM
+	)    
+	generateStateDiagram(
+		Monochrome=true
+		metamodel: Elevator
+	)
+	generateStateTransitionTable(
+		Monochrome=true
+		metamodel: Elevator
+	)		
+	measureComplexity(
+		filename: Elevator
+		definitionPackages: ElevatorFSM
+	)
+	generateProjectWebPage(
+		title: "Systext Demo: FSM/Elevator"
+		taskPackages: ElevatorFSM  
+	)
+
+}

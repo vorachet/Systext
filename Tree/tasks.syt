@@ -1,0 +1,54 @@
+include "metamodels.syt"
+include "objects.syt"
+include "transformations.syt"
+  
+package Tree {
+	generateEmfaticMetaModelFile(packages: TreeMetamodels)
+	generateMetaModelStructuralView(
+		filename: All 
+		Monochrome=true 
+		packages: TreeMetamodels
+	) 
+	selectivelyGenerateObjectStructuralView(
+		filename: Animal
+		Monochrome=true
+		topLevelObject: TreeObjects.Animal
+	)
+	generateObjectStructuralView(
+		filename: All
+		Monochrome=true
+		packages: TreeObjects
+	) 
+	generateEOLCreationScipt(
+		topLevelInstance: TreeObjects.Organism
+		srcEcorePackage: TreeMetamodels  
+	)        
+	runM2TTransformation(
+		filename: OrganismTreeType1
+    	topLevelInstance: TreeObjects.Organism  
+    	transformer: TreeTransformations.Type1Transformer
+    )
+    runM2TTransformation(
+    	filename: AnimalTreeType1
+    	topLevelInstance: TreeObjects.Animal  
+    	transformer: TreeTransformations.Type1Transformer
+    )
+    runM2TTransformation(
+    	filename: OrganismTreeType2
+    	topLevelInstance: TreeObjects.Organism  
+    	transformer: TreeTransformations.Type2Transformer
+    )
+    runM2TTransformation(
+    	filename: AnimalTreeType2
+    	topLevelInstance: TreeObjects.Animal  
+    	transformer: TreeTransformations.Type2Transformer
+    )
+    measureComplexity(
+    	filename: TreeModel
+    	definitionPackages: TreeMetamodels TreeObjects
+    )
+    generateProjectWebPage(
+		title: "Systext Demo: DataStructure/Tree"
+		taskPackages: Tree  
+	)
+}

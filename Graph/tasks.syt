@@ -1,0 +1,56 @@
+include "metamodels.syt"
+include "objects.syt"
+include "transformations.syt"
+  
+import GraphMetamodels.*    
+import GraphTransformations.*  
+        
+package Graph {     	                                   
+	generateEmfaticMetaModelFile(packages: GraphMetamodels)
+	generateMetaModelStructuralView(  
+		filename: All 
+		Monochrome=true 
+		packages: GraphMetamodels
+	)                
+	selectivelyGenerateObjectStructuralView(
+		filename: FishIsAnimal 
+		Monochrome=true
+		topLevelObject: GraphObjects.FishIsAnimal	
+	) 
+	generateObjectStructuralView(
+		filename: All  
+		Monochrome=true  
+		packages: GraphObjects      
+	)    
+	generateEOLCreationScipt(
+		topLevelInstance: GraphObjects.OrganismGraph
+		srcEcorePackage: GraphMetamodels
+	)    
+	generateEOLCreationScipt(
+		topLevelInstance: GraphObjects.Animal
+		srcEcorePackage: GraphMetamodels
+	)   
+	runM2TTransformation(
+		filename: OrganismGraph
+		topLevelInstance: GraphObjects.OrganismGraph 
+		transformer: GrapToGraphDiagramTransformer  
+	)     
+	runM2TTransformation(
+		filename: Fish
+		topLevelInstance: GraphObjects.Fish 
+		transformer: NodeToGraphDiagramTransformer
+	)
+	runM2TTransformation(
+		filename: Animal
+		topLevelInstance: GraphObjects.Animal 
+		transformer: NodeToGraphDiagramTransformer
+	)
+	measureComplexity(
+		filename: GraphModel
+		definitionPackages: GraphMetamodels GraphObjects
+	)	
+	generateProjectWebPage(
+		title: "Systext Demo: DataStructure/Graph"
+		taskPackages: Graph  
+	)
+}                                                                               

@@ -1,0 +1,29 @@
+include "metamodels.syt"
+include "objects.syt"
+
+import AccelerationMetamodels.*		
+import AccelerationObjects.*		
+
+	  
+package Acceleration {	
+	generateConstraintBlockDiagram (
+		Monochrome=true
+		constraintBlock: Acceleration
+	)  
+	runTradeOffAnalysis (  
+		filename:AccelerationTradeoffAnalysis 
+		Monochrome=true
+		LineType=Ortho
+		LineLength=Medium
+		constraintBlock: Acceleration
+		objects: data1 data2 data3
+	)
+	measureComplexity(
+		filename: AccelerationModel
+		definitionPackages: AccelerationMetamodels AccelerationObjects
+	)	
+	generateProjectWebPage(
+		title: "Systext Demo: Constraint/Acceleration"
+		taskPackages: Acceleration
+	)
+}

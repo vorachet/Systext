@@ -1,0 +1,54 @@
+package StopWatchFSM {
+	
+	class StopWatch {         
+		func turnOn() {}
+		func turnOff() {}       
+		func resetDisplay() {}        
+		func ensureTimer() {}  
+		func syncDisplay() {}     
+		func start() {}       
+		func stop() {}                
+    	func stopTimer() {}                           
+		func reset() {}                      
+		func split() {}                      
+		func unsplit() {}                  
+		func freezeDisplay() {}                  
+		state OFF InitialState {     
+			inputFunc: turnOn outgoingState: READY   
+		}         
+		state READY {                         
+			inputFunc: start outgoingState: RUNNING    
+			inputFunc: turnOff outgoingState: OFF 
+			runEntryFuncs: resetDisplay        
+		}                                            
+		state RUNNING {           
+			inputFunc: stop outgoingState: STOPPED    
+			inputFunc: split outgoingState: PAUSED
+			inputFunc: turnOff outgoingState: OFF        
+			runEntryFuncs: ensureTimer syncDisplay 
+		}          
+		state STOPPED {
+			inputFunc: reset outgoingState: READY 
+			inputFunc: turnOff outgoingState: OFF
+			runEntryFuncs: stopTimer
+		}  
+		state PAUSED {  
+			inputFunc: stop outgoingState: STOPPED 
+			inputFunc: unsplit outgoingState: RUNNING
+			inputFunc: turnOff outgoingState: OFF
+			runEntryFuncs: freezeDisplay
+		}
+	}
+	
+	generateStateDiagram(Monochrome=true LineType=Curve metamodel: StopWatch )
+	generateStateTransitionTable(Monochrome=true metamodel: StopWatch )	
+	measureComplexity(
+		filename: StopWatch
+		definitionPackages: StopWatchFSM
+	)
+	generateProjectWebPage(
+		title: "Systext Demo: FSM/StopWatch"
+		taskPackages: StopWatchFSM  
+	)
+		
+}

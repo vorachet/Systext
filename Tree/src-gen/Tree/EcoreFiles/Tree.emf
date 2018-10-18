@@ -1,0 +1,10 @@
+@namespace(uri=Tree, prefix=Tree)
+
+package Tree;
+
+class Tree {
+	attr String ~id;
+	attr String label;
+	val Tree[*] children;
+}
+

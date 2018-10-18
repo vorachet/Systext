@@ -1,0 +1,148 @@
+include "metamodels.syt"
+
+import TreeMetamodels.*
+ 
+package TreeTransformations {
+		
+	m2t Type1Transformer = M2TTransformation (outputFileExtension: "html") {
+		beforeText:  
+            "
+            <html>
+            <head>
+            <style>
+            .tree,
+            .tree ul {
+              margin:0 0 0 1em;
+              padding:0;
+              list-style:none;
+              position:relative;
+            }
+            .tree ul {margin-left:.5em} 
+            .tree:before,
+            .tree ul:before {
+              content:\"\";
+              display:block;
+              width:0;
+              position:absolute;
+              top:0;
+              bottom:0;
+              left:0;
+              border-left:1px solid;
+            }
+            .tree li {
+              margin:0;
+              padding:0 1.5em; 
+              line-height:2em; 
+              font-weight:bold;
+              position:relative;
+            }
+            .tree li:before {
+              content:\"\";
+              display:block;
+              width:10px;
+              height:0;
+              border-top:1px solid;
+              margin-top:-1px; 
+              position:absolute;
+              top:1em; 
+              left:0;
+            }
+            .tree li:last-child:before {
+              background:white; 
+              height:auto;
+              top:1em;
+              bottom:0;
+            }
+            </style>
+            </head>
+            <body><ul class=\"tree\">
+            "
+		afterText: "</ul></body></html>"
+		template: {     
+			metamodel: Tree 
+			text: 
+                "
+                <li>
+					%_id%
+                	<ul>%children%</ul>
+				</li>
+                " 
+		}     
+	}     
+	 
+	m2t Type2Transformer = M2TTransformation (outputFileExtension: "html") {
+		beforeText: 
+            "
+            <html>
+            <head>
+            <style>
+            * {margin: 0; padding: 0;}
+            .tree ul {
+                padding-top: 20px; position: relative;
+            	transition: all 0.5s;
+            	-webkit-transition: all 0.5s;
+            	-moz-transition: all 0.5s;
+            }
+            .tree li {
+				font-weight:bold;
+            	float: left; text-align: center;
+            	list-style-type: none;
+            	position: relative;
+            	padding: 20px 5px 0 5px;
+            	transition: all 0.5s;
+            	-webkit-transition: all 0.5s;
+            	-moz-transition: all 0.5s;
+            }
+            .tree li::before, .tree li::after{
+            	content: '';
+            	position: absolute; top: 0; right: 50%;
+            	border-top: 1px solid;
+            	width: 50%; height: 20px;
+            }
+            .tree li::after{
+            	right: auto; left: 50%;
+            	border-left: 1px solid;
+            }
+            .tree li:only-child::after, .tree li:only-child::before {
+            	display: none;
+            }
+            .tree li:only-child{ padding-top: 0;}
+            .tree li:first-child::before, .tree li:last-child::after{
+            	border: 0 none;
+            }
+            .tree li:last-child::before{
+            	border-right: 1px solid;
+            	border-radius: 0 5px 0 0;
+            	-webkit-border-radius: 0 5px 0 0;
+            	-moz-border-radius: 0 5px 0 0;
+            }
+            .tree li:first-child::after{
+            	border-radius: 5px 0 0 0;
+            	-webkit-border-radius: 5px 0 0 0;
+            	-moz-border-radius: 5px 0 0 0;
+            }
+            .tree ul ul::before{
+            	content: '';
+            	position: absolute; top: 0; left: 50%;
+            	border-left: 1px solid;
+            	width: 0; height: 20px;
+            }
+            </style>
+            </head>
+            <body>
+            <div class=\"tree\"><ul>"  
+		
+		afterText: "</ul></div></body></html>"
+		template: {   
+			metamodel: Tree 
+			text:   
+                "
+                <li>
+					%_id%
+                	<ul>%children%</ul>
+				</li>
+                " 
+		}     
+	}  
+	
+}

@@ -1,0 +1,6 @@
+package TreeMetamodels {
+	class Tree {  
+		attr String label
+		part Tree[*] children
+	} 
+} 

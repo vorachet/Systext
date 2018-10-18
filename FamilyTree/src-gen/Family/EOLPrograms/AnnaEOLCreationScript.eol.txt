@@ -1,0 +1,21 @@
+var anna = new Member();
+anna.id = "Anna";
+
+var oliver = new Member();
+oliver.id = "Oliver";
+
+var robert = new Member();
+robert.id = "Robert";
+
+var jacob = new Member();
+jacob.id = "Jacob";
+
+var james = new Member();
+james.id = "James";
+
+anna.kids.add(oliver); 
+anna.kids.add(robert); 
+anna.kids.add(jacob); 
+anna.mate.add(james); 
+
+"Done".println();

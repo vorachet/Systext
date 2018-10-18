@@ -1,0 +1,73 @@
+package CompositionMetamodels {
+	constraint AdditionEq  {         
+		output: x  = "a + b"    
+		input: a input: b             
+	}
+		  
+	constraint Addition3ArgsEq  {         
+		output: x  = "a + b + c"    
+		input: a  input: b  input: c             
+	}    
+		                                                     
+	constraint SubtractionEq  {     
+		output: x = "a - b"  
+		input: a input: b  
+	} 
+		                               
+	constraint MultiplicationEq  {  
+		output: x = "a * b"  
+		input: a input: b 
+	} 
+		                
+	constraint DivisionEq  {    
+		output: x = "a / b"   
+		input: a input: b   
+	}           
+		                  
+	constraintBlock C0 {    
+		output: x = 1:AdditionEq.x     
+		input: a = 1:AdditionEq.a 
+		input: b = 1:AdditionEq.b     
+	}  
+		  
+	constraintBlock C1 {    
+		output: x = 1:Addition3ArgsEq.x   
+		output: y = 2:AdditionEq.x  
+		input: a = 2:AdditionEq.a 1:Addition3ArgsEq.a
+		input: b = 2:AdditionEq.b 1:Addition3ArgsEq.b
+		constant: 20.12 > 1:Addition3ArgsEq.c
+	}            
+                                 
+	constraintBlock C2 {  
+		output: x = 1:SubtractionEq.x   
+		input: a = 2:SubtractionEq.a    
+		input: b = 2:SubtractionEq.b  
+		input: c = 3:AdditionEq.a     
+		input: d = 3:AdditionEq.b  
+		wire: 2:SubtractionEq.x > 1:SubtractionEq.a    
+		wire: 3:AdditionEq.x > 1:SubtractionEq.b  
+	}                                                                                                                                                     
+                                                  
+	constraintBlock C3 {       
+		output: x = 1:SubtractionEq.x     
+		output: y = 4:AdditionEq.x
+		input: a = 4:AdditionEq.a
+		input: b = 2:SubtractionEq.a 
+		input: c = 2:SubtractionEq.b
+		input: d = 3:AdditionEq.a      
+		input: e = 3:AdditionEq.b
+		input: f = 1:SubtractionEq.b   
+		constant: 40 > 5:AdditionEq.b       
+		constant: 100 > 4:AdditionEq.b      
+		wire: 2:SubtractionEq.x > 6:MultiplicationEq.a
+		wire: 3:AdditionEq.x > 6:MultiplicationEq.b  
+		wire: 6:MultiplicationEq.x > 5:AdditionEq.a   
+		wire: 5:AdditionEq.x > 1:SubtractionEq.a	  
+	}
+		
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C0) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C1) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C2) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C3)                 
+              
+}

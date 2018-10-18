@@ -1,0 +1,18 @@
+include "metamodels.syt"
+
+import FamilyTreeMetamodels.*
+import FamilyTreeMetamodels.Member.*
+      
+package FamilyTreeObjects {
+	Joe:Member  
+	Marry:Member {ref:kids{John Anna} ref:mate{Joe}}
+	John: Member {ref:kids{Nancy Linda} ref:mate{Susan}} 
+	Nancy: Member
+	Linda: Member
+	James: Member
+	Anna: Member {ref:kids{Oliver Robert Jacob} ref:mate{James}}
+	Oliver: Member
+	Robert: Member
+	Jacob: Member
+	Susan: Member 
+}	            

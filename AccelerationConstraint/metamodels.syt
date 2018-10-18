@@ -1,0 +1,32 @@
+package AccelerationMetamodels {	
+	unit MeterPerSecond "m/s"
+	unit Second "sec"
+	unit Meter "m"
+	unit MeterPerSecondSquared  "m/s^2"
+	class TestableModel {   
+		attr Double acceleration     
+		attr Double initialSpeed     
+		attr Double finalSpeed
+		attr Double time  
+	}    
+	constraint AccelerationEq {  
+		output: acceleration unit:MeterPerSecondSquared = "(finalSpeed - initialSpeed) / time"    
+		input: finalSpeed unit:MeterPerSecond
+		input: initialSpeed unit:MeterPerSecond
+		input: time unit:Second
+	}     
+	constraint DistanceEq {  
+		output: distance unit:Meter = "(initialSpeed * time) + (0.5 * acceleration * time^2)"
+		input: acceleration unit:MeterPerSecondSquared
+		input: time unit:Second
+		input: initialSpeed unit:MeterPerSecond
+	}   
+	constraintBlock Acceleration { 
+		output: acceleration = 1:AccelerationEq.acceleration
+		output: distance = 2:DistanceEq.distance
+		input: finalSpeed = 1:AccelerationEq.finalSpeed
+		input: initialSpeed = 1:AccelerationEq.initialSpeed 2:DistanceEq.initialSpeed  
+		input: time = 1:AccelerationEq.time 2:DistanceEq.time
+		wire: 1:AccelerationEq.acceleration > 2:DistanceEq.acceleration
+	}  	
+} 

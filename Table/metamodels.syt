@@ -1,0 +1,17 @@
+package TableMetamodels {
+	class Table { 
+		attr String no
+		attr String name 
+		part Column[*] columns
+		part Cell[*] cells
+	}  
+	class Column { 
+		attr String name
+		attr Integer	i 
+	} 
+	class Cell { 
+		attr String name
+		attr Integer r
+		ref Column c   
+	} 
+}

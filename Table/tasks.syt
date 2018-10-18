@@ -1,0 +1,47 @@
+include "metamodels.syt"
+include "objects.syt"
+include "transformations.syt"
+  
+import TableMetamodels.*  
+import TableTransformations.*   
+      
+package Table {      
+	generateEmfaticMetaModelFile(packages: TableMetamodels)
+	selectivelyGenerateMetaModelStructuralView(
+		filename: Some
+		Monochrome=true  
+		metaModels: Table Cell 
+	)  
+	generateMetaModelStructuralView( 
+		filename: All
+		Monochrome=true  
+		packages: TableMetamodels
+	)      
+	selectivelyGenerateObjectStructuralView(
+		filename: a1
+		Monochrome=true  
+		topLevelObject: TableObjects.a1
+	)
+	generateObjectStructuralView(  
+		filename: All
+		Monochrome=true
+		packages: TableObjects
+	)  
+	generateEOLCreationScipt(  
+		topLevelInstance: TableObjects.t1
+		srcEcorePackage: TableMetamodels
+	)
+	runM2TTransformation(
+		filename: Table_t1  
+		topLevelInstance: TableObjects.t1 
+		transformer: modelToJSBasedTableTransformer
+	)  
+	measureComplexity(
+		filename: TableModel
+		definitionPackages: TableMetamodels TableObjects
+	)
+	generateProjectWebPage(
+		title: "Systext Demo: DataStructure/Table"
+		taskPackages: Table
+	)
+}

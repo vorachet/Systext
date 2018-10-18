@@ -1,0 +1,45 @@
+var marry = new Member();
+marry.id = "Marry";
+
+var john = new Member();
+john.id = "John";
+
+var nancy = new Member();
+nancy.id = "Nancy";
+
+var linda = new Member();
+linda.id = "Linda";
+
+var susan = new Member();
+susan.id = "Susan";
+
+john.kids.add(nancy); 
+john.kids.add(linda); 
+john.mate.add(susan); 
+var anna = new Member();
+anna.id = "Anna";
+
+var oliver = new Member();
+oliver.id = "Oliver";
+
+var robert = new Member();
+robert.id = "Robert";
+
+var jacob = new Member();
+jacob.id = "Jacob";
+
+var james = new Member();
+james.id = "James";
+
+anna.kids.add(oliver); 
+anna.kids.add(robert); 
+anna.kids.add(jacob); 
+anna.mate.add(james); 
+var joe = new Member();
+joe.id = "Joe";
+
+marry.kids.add(john); 
+marry.kids.add(anna); 
+marry.mate.add(joe); 
+
+"Done".println();

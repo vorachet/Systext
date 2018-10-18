@@ -1,0 +1,7 @@
+package FamilyTreeMetamodels {      
+	class Member {  
+		attr String name 
+		ref	Member[*] mate
+		ref	Member[*] kids   
+	}  
+}	                  

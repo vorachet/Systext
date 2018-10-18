@@ -1,0 +1,12 @@
+include "metamodels.syt"
+
+import TreeMetamodels.*  
+import TreeMetamodels.Tree.*
+		
+package TreeObjects {
+	Organism: Tree {part:children{Plant Animal} }  
+	Plant: Tree  
+	Animal: Tree {part:children{Mammal Fish} }     
+	Mammal: Tree
+	Fish: Tree
+} 

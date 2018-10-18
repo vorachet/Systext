@@ -1,0 +1,42 @@
+package Customer {            
+	class Stakeholder {     
+		attr String name     
+		ref "provides" Opportunity[*] opportunities
+		ref "demands" Solution.Requirement requirements
+		ref "users and consumes" Solution.System[*] systems
+		ref "supports" Endeavor.Team[*] teams  
+	}      
+	class Opportunity {  
+		ref "focuses" Solution.Requirement requirements
+	}
+}  
+// https://www.omg.org/spec/Essence/
+// Extension points: We add requirement id and requirement text into Requirement  
+package Solution {     
+	class Requirement {    
+		attr String id
+		attr String text
+		part "sub requirements" Requirement[*] requirements
+		ref "scopes and constraints" Endeavor.Work[*] works
+	}
+	class System {   
+		ref "helps to address" Customer.Opportunity[*] opportunities
+		ref "fulfills" Requirement[*] requirements
+	} 
+}    
+
+package Endeavor {   
+	class Work {
+		attr String name
+		ref "setup to address" Customer.Opportunity[*] opportunities
+		ref "updates and changes" Solution.System[*] systems
+	}
+	class WayOfWorking {   
+		ref "guides" Work[*] works
+	} 
+	class Team {   
+		ref "performs and plans" Work[*] works
+		ref "applies" WayOfWorking[*] waysOfWorking
+		ref "produces" Solution.System[*] systems	
+	} 
+}    

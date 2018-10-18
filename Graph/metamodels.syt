@@ -1,0 +1,16 @@
+package GraphMetamodels {
+	class Graph {     
+   		part Node[*] nodes;
+   		part Edge[*] edges;
+	}              
+	class Node {       
+   		attr String label
+   		ref Edge outgoing
+   		ref Edge[*] incomings
+	}  
+	class Edge {  
+    	attr String label
+    	ref Node source
+    	ref Node target      
+    }  
+}     

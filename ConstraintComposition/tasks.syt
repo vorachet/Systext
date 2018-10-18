@@ -1,0 +1,18 @@
+include "metamodels.syt"
+
+import CompositionMetamodels.*
+
+package Composition {
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C0) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C1) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C2) 
+	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C3)      
+	measureComplexity(
+		filename: Composition                  
+		definitionPackages: CompositionMetamodels
+	)
+	generateProjectWebPage(
+		title: "Systext Demo: Constraint/Composition"
+		taskPackages: Composition 
+	)
+}

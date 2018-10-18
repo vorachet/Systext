@@ -1,0 +1,51 @@
+include "metamodels.syt"
+include "objects.syt"
+include "transformations.syt"
+   
+import FamilyTreeMetamodels.*         
+import FamilyTreeTransformations.*  
+                 
+package Family {                    
+	generateEmfaticMetaModelFile(packages: FamilyTreeMetamodels)
+	generateMetaModelStructuralView(
+		filename: All   
+		Monochrome=true
+		packages: FamilyTreeMetamodels
+	)     
+	selectivelyGenerateObjectStructuralView( 
+		filename: Anna
+		Monochrome=true  
+		topLevelObject: FamilyTreeObjects.Anna
+	)  
+	generateObjectStructuralView(       
+		filename: All       
+		Monochrome=true       
+		packages: FamilyTreeObjects  
+	)          
+	generateEOLCreationScipt(      
+		topLevelInstance: FamilyTreeObjects.Marry
+		srcEcorePackage: FamilyTreeMetamodels 
+	)         
+	generateEOLCreationScipt( 
+		topLevelInstance: FamilyTreeObjects.Anna
+		srcEcorePackage: FamilyTreeMetamodels
+	)            
+	runM2TTransformation(
+		filename: Marry
+		topLevelInstance: FamilyTreeObjects.Marry  
+		transformer: Model2FamilyTreeDiagramTransformer
+	)
+	runM2TTransformation(
+		filename: Anna
+		topLevelInstance: FamilyTreeObjects.Anna
+		transformer: Model2FamilyTreeDiagramTransformer
+	)
+	measureComplexity(
+		filename: FamilyTree
+		definitionPackages: FamilyTreeMetamodels FamilyTreeObjects
+	) 
+	generateProjectWebPage(
+		title: "Systext Demo: DataStructure/FamilyTree"
+		taskPackages: Family  
+	)
+}                                                                               

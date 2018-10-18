@@ -1,0 +1,11 @@
+@namespace(uri=Family, prefix=Family)
+
+package Family;
+
+class Member {
+	attr String ~id;
+	attr String name;
+	ref Member[*] mate;
+	ref Member[*] kids;
+}
+

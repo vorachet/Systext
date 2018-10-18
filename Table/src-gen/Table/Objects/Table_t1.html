@@ -1,0 +1,72 @@
+
+			<html>  
+				<head>
+					<style>
+						table {
+    						border-collapse: collapse;
+						}
+						table, th, td {
+							padding: 10px;
+   							border: 1px solid black;
+						}
+					</style>
+					<script>
+					function addRow(cIndex, rIndex, cellText) {
+						var table = document.getElementById('tableEleId');
+						var tableRef = document.getElementById('tableEleId').getElementsByTagName('tbody')[0];
+						var numOfRows = table.rows.length;
+						var numOfRow0Cells = table.rows[0].cells.length;
+						if (cIndex > numOfRow0Cells) {
+							return alert('cIndex is out of length table columns');
+						}
+						if (typeof table.rows[rIndex + 1] === 'undefined') {
+							var targetRIndex = rIndex + 1
+							if (numOfRows < targetRIndex) {
+								var diff = targetRIndex - numOfRows + 1
+								for(n=0; n < diff; n++) {
+									var row = tableRef.insertRow(tableRef.rows.length);
+									for(c=0; c<numOfRow0Cells; c++) {
+										var cell = row.insertCell(c);
+										cell.innerHTML = '';
+									}
+								}
+							} else {
+								var row = tableRef.insertRow(numOfRows - 1);
+								for(c=0; c < numOfRow0Cells; c++) {
+									var cell = row.insertCell(c);
+									cell.innerHTML = '';
+								}
+							}
+						}
+						var cellToBeInserted = tableRef.rows[rIndex].cells[cIndex];
+						cellToBeInserted.innerHTML += cellText + '<br>';
+					}
+					</script>
+				</head>
+			<body>
+			
+			<div align="center">
+			<p>Table.1 Table1</p>
+			<table id="tableEleId">
+				<thead>
+					<tr><th>A</th><th>B</th><th>C</th></tr>
+				</thead>
+				<tbody valign="top"></tbody>
+			</table>
+			</div>
+			<script>
+				
+				addRow(0, 0, 'A1');
+			
+				addRow(1, 0, 'B1');
+			
+				addRow(2, 0, 'C1');
+			
+				addRow(2, 0, 'C2');
+			
+				addRow(2, 0, 'C3');
+			
+			</script>
+			
+			</body>
+			</html>

@@ -1,0 +1,25 @@
+@namespace(uri=Table, prefix=Table)
+
+package Table;
+
+class Table {
+	attr String ~id;
+	attr String no;
+	attr String name;
+	val Column[*] columns;
+	val Cell[*] cells;
+}
+
+class Column {
+	attr String ~id;
+	attr String name;
+	attr Integer i;
+}
+
+class Cell {
+	attr String ~id;
+	attr String name;
+	attr Integer r;
+	ref Column[1] c;
+}
+

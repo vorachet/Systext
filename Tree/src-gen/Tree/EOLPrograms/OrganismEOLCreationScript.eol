@@ -1,0 +1,21 @@
+var organism = new Tree();
+organism.id = "Organism";
+
+var plant = new Tree();
+plant.id = "Plant";
+
+var animal = new Tree();
+animal.id = "Animal";
+
+var mammal = new Tree();
+mammal.id = "Mammal";
+
+var fish = new Tree();
+fish.id = "Fish";
+
+animal.children.add(mammal); 
+animal.children.add(fish); 
+organism.children.add(plant); 
+organism.children.add(animal); 
+
+"Done".println();

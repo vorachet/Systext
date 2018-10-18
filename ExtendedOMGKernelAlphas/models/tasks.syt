@@ -1,0 +1,25 @@
+include "metamodels.syt"
+
+package ExtendedOMGKernelAlphas {   
+	generateEmfaticMetaModelFile(packages: Customer Solution Endeavor)     
+	generateMetaModelStructuralView(
+		filename: Metamodels
+		Monochrome=true
+		LineType=CurveLineLength=Short
+		packages: Customer Solution Endeavor
+	) 
+	generateMetaModelStructuralView(
+			filename: MetamodelsWithPackage
+			Monochrome=true
+			showPackage LineType=Curve
+			packages: Customer Solution Endeavor
+	)
+	measureComplexity( 
+		filename: ExtendedOMGKernelAlphas
+		definitionPackages: Customer Solution Endeavor
+	)
+	generateProjectWebPage(
+		title: "Extended OMG Kernel Alphas / Extension points: We add requirement id and requirement text into Requirement"
+		taskPackages: ExtendedOMGKernelAlphas
+	)
+}    

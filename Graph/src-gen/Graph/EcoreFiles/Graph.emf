@@ -1,0 +1,24 @@
+@namespace(uri=Graph, prefix=Graph)
+
+package Graph;
+
+class Graph {
+	attr String ~id;
+	val Node[*] nodes;
+	val Edge[*] edges;
+}
+
+class Node {
+	attr String ~id;
+	attr String label;
+	ref Edge[1] outgoing;
+	ref Edge[*] incomings;
+}
+
+class Edge {
+	attr String ~id;
+	attr String label;
+	ref Node[1] source;
+	ref Node[1] target;
+}
+

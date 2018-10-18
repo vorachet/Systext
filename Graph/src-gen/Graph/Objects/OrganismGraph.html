@@ -1,0 +1,53 @@
+   
+			<html>         
+				<head>      
+					<meta charset="utf-8">    
+  					<script type="text/javascript" src="Resources/vis.min.js"></script>
+  					<link href="Resources/vis.min.css" rel="stylesheet" type="text/css" />
+  					<style>
+    					#graph {  
+      						width: 600px;
+      						height: 400px;
+    					}
+  					</style>  
+				</head>
+				<body>  
+					<div id="graph"></div>  
+					<script>
+			    
+				var nodes = new vis.DataSet([     
+				{id: 'Organism', label: 'Organism', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				    
+				{id: 'Plant', label: 'Plant', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				    
+				{id: 'Animal', label: 'Animal', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				    
+				{id: 'Mammal', label: 'Mammal', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				    
+				{id: 'Fish', label: 'Fish', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				 ]);
+				var edges = new vis.DataSet([   
+				{from: 'Plant', to: 'Organism', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
+				  
+				{from: 'Animal', to: 'Organism', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
+				  
+				{from: 'Mammal', to: 'Animal', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
+				  
+				{from: 'Fish', to: 'Animal', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
+				 ]); 
+				
+  						var container = document.getElementById('graph');
+  						var data = {
+    						nodes: nodes,  
+    						edges: edges  
+  						};
+  						var options = {  
+							physics: {   
+								enabled: true
+							}  
+						};    
+  						var network = new vis.Network(container, data, options);
+					</script>
+				</body>
+			</html>  
+			

@@ -1,0 +1,59 @@
+include "metamodels.syt"
+
+import GraphMetamodels.*
+import GraphMetamodels.Graph.*   
+import GraphMetamodels.Edge.*
+	    	
+package GraphObjects { 
+	OrganismGraph: Graph {
+		part:nodes {
+			Organism Plant 
+			Animal Mammal Fish
+		}   
+		part:edges {
+			PlantIsOrganism
+			AnimalIsOrganism
+			MammalIsAnimal
+			FishIsAnimal
+		}		
+	}  
+	Organism: Node {
+		ref:Node.incomings{
+			AnimalIsOrganism 
+			PlantIsOrganism
+		}
+	}
+	Plant: Node {
+		ref:Node.outgoing {PlantIsOrganism}
+	}
+	Animal: Node {
+		ref:Node.outgoing {AnimalIsOrganism}
+		ref:Node.incomings {FishIsAnimal MammalIsAnimal}
+	}
+	Mammal: Node {
+		ref:Node.outgoing{MammalIsAnimal}
+	}
+	Fish: Node {
+		ref:Node.outgoing{FishIsAnimal}
+	}
+	PlantIsOrganism: Edge {
+		label = "isA" 
+		ref:source{Plant} 
+		ref:target{Organism}
+	}
+	AnimalIsOrganism: Edge {
+		label = "isA" 
+		ref:source{Animal} 
+		ref:target{Organism}
+	}
+	MammalIsAnimal: Edge {
+		label = "isA"
+		ref:source{Mammal} 
+		ref:target{Animal}
+	}
+	FishIsAnimal: Edge {
+		label = "isA"
+		ref:source{Fish} 
+		ref:target{Animal}
+	}
+}
