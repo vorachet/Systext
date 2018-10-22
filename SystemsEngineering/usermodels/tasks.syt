@@ -1,0 +1,45 @@
+include "requirements.syt"
+include "queries.syt"
+include "transformations.syt"
+
+package RequirementsDocumentation {  
+
+	generateMetaModelStructuralViewByPackages(
+		filename: "Metamodels"
+		Monochrome=true
+		showPackage
+		metamodelPackages: Customer Endeavor Solution
+	)
+	generateObjectStructuralViewByPackages(
+		filename: "Requirements"  
+		Monochrome=true
+		instancePackages: Requirements  
+	)
+	    
+	runM2TTransformation(
+		filename: "RequirementsManagementMarkdownDoc"
+		topLevelInstance: Requirements.TopLevelRequirements
+		transformer: MyRequirementsManagementTransformations.ReqModelToMarkdownReqSpec
+	)  
+	
+	runM2TTransformation(
+		filename: "RequirementsManagementHTMLDoc" 
+		topLevelInstance: Requirements.TopLevelRequirements
+		transformer: MyRequirementsManagementTransformations.ReqModelToHTMLReqSpec
+	)  
+	
+	measureComplexity(
+		filename: "RequirementsManagement"
+		definitionPackages: Customer Solution Endeavor Requirements
+	)
+	
+	query MissingTextRequirements(
+		Requirements::Solution.Requirement
+			=Solution.Requirement.text.isEmpty
+	)->resultsToText()->resultsToDiagram()
+	
+	generateProjectWebPage(
+		title: "My Requirements Management"
+		taskPackages: RequirementsDocumentation 
+	)
+}

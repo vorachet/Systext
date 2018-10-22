@@ -1,0 +1,2 @@
+# MissingNameCell:TableObjects->Cell=name.isEmpty()
+d1:Cell

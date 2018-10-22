@@ -1,0 +1,46 @@
+include "../metamodels/metamodels.syt"
+
+import Solution.Requirement
+import Solution.Requirement.*
+ 
+package Requirements {
+	
+	inst TopLevelRequirements:Requirement { 
+		id = "TopLevelRequirements"
+		text = ""  
+		requirements: FunctionalRequirements NonFunctionalRequirements
+	} 
+	
+	inst FunctionalRequirements:Requirement {
+		id = "R1: Functional Requirements"
+		text = "Functional Requirements"  
+		requirements: r1_1 r1_2
+	}  
+	
+	inst NonFunctionalRequirements:Requirement {
+		id = "NFR1: Non-Functional Requirements"
+		text = "Non-Functional Requirements"  
+		requirements: r2_1 r2_2
+	} 
+	
+	inst r1_1:Requirement {
+		id = "R1.1" text = "text of R1.1"
+	}  
+	
+	inst r1_2:Requirement {
+		id = "R1.2" text = "" 
+		requirements: r1_2_1      
+	} 
+	
+	inst r1_2_1:Requirement {
+		id = "R1.2.1" text = "text of R1.2.1"
+	} 
+	
+	inst r2_1:Requirement {
+		id = "NFR2.1" text = ""
+	}
+	
+	inst r2_2:Requirement {
+		id = "NFR2.2" text = "text of NFR2.2"
+	} 
+}

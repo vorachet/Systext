@@ -1,0 +1,8 @@
+FamilyPackage “id-001” { 
+	Family “The McDonalds” {
+Attribute representations
+familyFriends: Family “The Smiths” }
+Family “The Smiths” {
+Attribute representations
+familyFriends: Family “The McDonalds” }
+}

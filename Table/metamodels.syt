@@ -14,4 +14,4 @@ package TableMetamodels {
 		attr Integer r
 		ref Column c   
 	} 
-}
+} 

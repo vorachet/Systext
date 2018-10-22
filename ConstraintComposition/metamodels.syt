@@ -12,7 +12,7 @@ package CompositionMetamodels {
 	constraint SubtractionEq  {     
 		output: x = "a - b"  
 		input: a input: b  
-	} 
+	}   
 		                               
 	constraint MultiplicationEq  {  
 		output: x = "a * b"  
@@ -64,10 +64,4 @@ package CompositionMetamodels {
 		wire: 6:MultiplicationEq.x > 5:AdditionEq.a   
 		wire: 5:AdditionEq.x > 1:SubtractionEq.a	  
 	}
-		
-	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C0) 
-	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C1) 
-	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C2) 
-	generateConstraintBlockDiagram(Monochrome=true LineLength=Medium constraintBlock: C3)                 
-              
 }

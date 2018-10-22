@@ -1,0 +1,2 @@
+# UnnnamedNodes:GraphObjects->Node=label.isEmpty()
+UnnamedNode:Node

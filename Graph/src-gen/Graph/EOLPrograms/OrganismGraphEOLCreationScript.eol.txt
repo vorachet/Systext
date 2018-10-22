@@ -3,6 +3,7 @@ organismgraph.id = "OrganismGraph";
 
 var organism = new Node();
 organism.id = "Organism";
+organism.label = "Organism";
 
 var animalisorganism = new Edge();
 animalisorganism.id = "AnimalIsOrganism";
@@ -10,6 +11,7 @@ animalisorganism.label = "isA";
 
 var animal = new Node();
 animal.id = "Animal";
+animal.label = "Animal";
 
 var fishisanimal = new Edge();
 fishisanimal.id = "FishIsAnimal";
@@ -17,6 +19,7 @@ fishisanimal.label = "isA";
 
 var fish = new Node();
 fish.id = "Fish";
+fish.label = "Fish";
 
 fish.outgoing = fishisanimal; 
 fishisanimal.source = fish; 
@@ -27,6 +30,7 @@ mammalisanimal.label = "isA";
 
 var mammal = new Node();
 mammal.id = "Mammal";
+mammal.label = "Mammal";
 
 mammal.outgoing = mammalisanimal; 
 mammalisanimal.source = mammal; 
@@ -42,20 +46,34 @@ plantisorganism.label = "isA";
 
 var plant = new Node();
 plant.id = "Plant";
+plant.label = "Plant";
 
 plant.outgoing = plantisorganism; 
 plantisorganism.source = plant; 
 plantisorganism.target = organism; 
 organism.incomings.add(animalisorganism); 
 organism.incomings.add(plantisorganism); 
+var unnamednode = new Node();
+unnamednode.id = "UnnamedNode";
+unnamednode.label = "";
+
+var unnamednodeisanimal = new Edge();
+unnamednodeisanimal.id = "UnnamedNodeIsAnimal";
+unnamednodeisanimal.label = "";
+
+unnamednodeisanimal.source = unnamednode; 
+unnamednodeisanimal.target = animal; 
+unnamednode.outgoing = unnamednodeisanimal; 
 organismgraph.nodes.add(organism); 
 organismgraph.nodes.add(plant); 
 organismgraph.nodes.add(animal); 
 organismgraph.nodes.add(mammal); 
 organismgraph.nodes.add(fish); 
+organismgraph.nodes.add(unnamednode); 
 organismgraph.edges.add(plantisorganism); 
 organismgraph.edges.add(animalisorganism); 
 organismgraph.edges.add(mammalisanimal); 
 organismgraph.edges.add(fishisanimal); 
+organismgraph.edges.add(unnamednodeisanimal); 
 
 "Done".println();

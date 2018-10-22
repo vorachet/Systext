@@ -4,18 +4,22 @@ import TableMetamodels.*
 import TableMetamodels.Cell.* 
 		 
 package TableObjects {
-	A:Column {Column.name="A" Column.i=0}
-	B:Column {Column.name="B" Column.i=1}
-	C:Column {Column.name="C" Column.i=2}
-	a1:Cell {name="A1" r=0 ref:c{A}}
-	b1:Cell {name="B1" r=0 ref:c{B}}
-	c1:Cell {name="C1" r=0 ref:c{C}}
-	c2:Cell {name="C2" r=0 ref:c{C}}
-	c3:Cell {name="C3" r=0 ref:c{C}}
-	t1:Table {
+	inst A:Column {Column.name="A" Column.i=0}
+	inst B:Column {Column.name="B" Column.i=1}
+	inst C:Column {Column.name="C" Column.i=2}
+	inst D:Column {Column.name="D" Column.i=3}
+	
+	inst a1:Cell {name="A1" r=0 ref:c:A}
+	inst b1:Cell {name="B1" r=0 ref:c:B}
+	inst c1:Cell {name="C1" r=0 ref:c:C}
+	inst c2:Cell {name="C2" r=0 ref:c:C}
+	inst c3:Cell {name="C3" r=0 ref:c:C}
+	inst d1:Cell {name="" r=0 ref:c:D}
+	
+	inst t1:Table {
 		Table.no=1 
 		Table.name="Table1" 
-		part: Table.columns{A B C}
-		part: Table.cells {a1 b1 c1 c2 c3}
+		Table.columns: A B C D
+		Table.cells: a1 b1 c1 c2 c3 d1
 	}
 }

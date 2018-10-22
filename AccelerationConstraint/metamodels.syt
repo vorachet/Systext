@@ -1,7 +1,7 @@
 package AccelerationMetamodels {	
 	unit MeterPerSecond "m/s"
 	unit Second "sec"
-	unit Meter "m"
+	unit Meter "m" 
 	unit MeterPerSecondSquared  "m/s^2"
 	class TestableModel {   
 		attr Double acceleration     

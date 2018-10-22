@@ -54,7 +54,7 @@ package GraphTransformations {
 			metamodel: Node         
 			text:   
 				"    
-				{id: '%_id%', label: '%_id%', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				{id: '%_id%', label: '%label%', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
 				"  
 		}  
 		template: {  
@@ -131,8 +131,8 @@ package GraphTransformations {
 			metamodel: Edge  
 			text:  
 				" 
-						nodeMap.set('%source._id%', {id: '%source._id%', label: '%source._id%', color: 'grey', font: {color: 'white', face: 'times', bold: true}} )
-						nodeMap.set('%target._id%', {id: '%target._id%', label: '%target._id%', color: 'grey', font: {color: 'white', face: 'times', bold: true}} )
+						nodeMap.set('%source._id%', {id: '%source._id%', label: '%source.label%', color: 'grey', font: {color: 'white', face: 'times', bold: true}} )
+						nodeMap.set('%target._id%', {id: '%target._id%', label: '%target.label%', color: 'grey', font: {color: 'white', face: 'times', bold: true}} )
 						edgeMap.set('%_id%', {from: '%source._id%', to: '%target._id%', arrows:'to', label: '%label%', font: {face: 'times', bold: true}} )
 				"
 		}

@@ -6,44 +6,60 @@ import FamilyTreeMetamodels.*
 import FamilyTreeTransformations.*  
                  
 package Family {                    
-	generateEmfaticMetaModelFile(packages: FamilyTreeMetamodels)
-	generateMetaModelStructuralView(
-		filename: All   
+	generateEmfaticMetaModelFile(metamodelPackages: FamilyTreeMetamodels)
+	generateMetaModelStructuralViewByPackages(
+		filename: "Metamodels"   
 		Monochrome=true
-		packages: FamilyTreeMetamodels
+		showPackage
+		metamodelPackages: FamilyTreeMetamodels
 	)     
-	selectivelyGenerateObjectStructuralView( 
-		filename: Anna
-		Monochrome=true  
-		topLevelObject: FamilyTreeObjects.Anna
-	)  
-	generateObjectStructuralView(       
-		filename: All       
+	generateObjectStructuralViewByPackages(       
+		filename: "Instances"       
 		Monochrome=true       
-		packages: FamilyTreeObjects  
+		instancePackages: FamilyTreeObjects  
 	)          
 	generateEOLCreationScipt(      
 		topLevelInstance: FamilyTreeObjects.Marry
-		srcEcorePackage: FamilyTreeMetamodels 
+		metamodelPackage: FamilyTreeMetamodels 
 	)         
 	generateEOLCreationScipt( 
 		topLevelInstance: FamilyTreeObjects.Anna
-		srcEcorePackage: FamilyTreeMetamodels
+		metamodelPackage: FamilyTreeMetamodels
 	)            
 	runM2TTransformation(
-		filename: Marry
+		filename: "MarryFamily"
 		topLevelInstance: FamilyTreeObjects.Marry  
 		transformer: Model2FamilyTreeDiagramTransformer
 	)
 	runM2TTransformation(
-		filename: Anna
+		filename: "AnnaFamily"
 		topLevelInstance: FamilyTreeObjects.Anna
 		transformer: Model2FamilyTreeDiagramTransformer
 	)
 	measureComplexity(
-		filename: FamilyTree
+		filename: "FamilyTree"
 		definitionPackages: FamilyTreeMetamodels FamilyTreeObjects
 	) 
+	query Single(
+		FamilyTreeObjects::Member
+			->Member.mate.sizeIsEqual(0)
+	)->resultsToText()->resultsToDiagram()
+	query Married(
+		FamilyTreeObjects::Member
+			->Member.mate.sizeIsGreaterThan(0)
+	)->resultsToText()->resultsToDiagram()
+	query HasOneKid(
+		FamilyTreeObjects::Member
+			->Member.kids.sizeIsEqual(1)
+	)->resultsToText()->resultsToDiagram()
+	query HasTwoKids(
+		FamilyTreeObjects::Member
+			->Member.kids.sizeIsEqual(2)
+	)->resultsToText()->resultsToDiagram()
+	query HasThreeKids(
+		FamilyTreeObjects::Member
+			->Member.kids.sizeIsEqual(3)
+	)->resultsToText()->resultsToDiagram()
 	generateProjectWebPage(
 		title: "Systext Demo: DataStructure/FamilyTree"
 		taskPackages: Family  

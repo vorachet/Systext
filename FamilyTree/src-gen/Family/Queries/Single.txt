@@ -1,0 +1,9 @@
+# Single:FamilyTreeObjects->Member->mate.sizeIsEqual(0)
+Oliver:Member
+Nancy:Member
+Joe:Member
+James:Member
+Susan:Member
+Robert:Member
+Jacob:Member
+Linda:Member

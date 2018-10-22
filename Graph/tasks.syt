@@ -6,49 +6,47 @@ import GraphMetamodels.*
 import GraphTransformations.*  
         
 package Graph {     	                                   
-	generateEmfaticMetaModelFile(packages: GraphMetamodels)
-	generateMetaModelStructuralView(  
-		filename: All 
-		Monochrome=true 
-		packages: GraphMetamodels
-	)                
-	selectivelyGenerateObjectStructuralView(
-		filename: FishIsAnimal 
-		Monochrome=true
-		topLevelObject: GraphObjects.FishIsAnimal	
-	) 
-	generateObjectStructuralView(
-		filename: All  
+	generateEmfaticMetaModelFile(metamodelPackages: GraphMetamodels)
+	generateMetaModelStructuralViewByPackages(  
+		filename: "Metamodels"
+		Monochrome=true   
+		showPackage
+		LineType=Curve
+		metamodelPackages: GraphMetamodels
+	)    
+	generateObjectStructuralViewByPackages(
+		filename: "Instances"  
 		Monochrome=true  
-		packages: GraphObjects      
+		LineType=Curve 
+		instancePackages: GraphObjects      
 	)    
 	generateEOLCreationScipt(
 		topLevelInstance: GraphObjects.OrganismGraph
-		srcEcorePackage: GraphMetamodels
-	)    
-	generateEOLCreationScipt(
-		topLevelInstance: GraphObjects.Animal
-		srcEcorePackage: GraphMetamodels
-	)   
+		metamodelPackage: GraphMetamodels
+	)     
 	runM2TTransformation(
-		filename: OrganismGraph
+		filename: "OrganismGraph"
 		topLevelInstance: GraphObjects.OrganismGraph 
 		transformer: GrapToGraphDiagramTransformer  
 	)     
 	runM2TTransformation(
-		filename: Fish
+		filename: "Fish"
 		topLevelInstance: GraphObjects.Fish 
 		transformer: NodeToGraphDiagramTransformer
 	)
 	runM2TTransformation(
-		filename: Animal
+		filename: "Animal"
 		topLevelInstance: GraphObjects.Animal 
 		transformer: NodeToGraphDiagramTransformer
 	)
 	measureComplexity(
-		filename: GraphModel
+		filename: "GraphModel"
 		definitionPackages: GraphMetamodels GraphObjects
 	)	
+	query UnnnamedNodes(
+		GraphObjects::Node
+			=Node.label.isEmpty
+	)->resultsToText()->resultsToDiagram()
 	generateProjectWebPage(
 		title: "Systext Demo: DataStructure/Graph"
 		taskPackages: Graph  

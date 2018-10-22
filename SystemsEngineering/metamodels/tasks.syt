@@ -1,0 +1,25 @@
+include "metamodels.syt"
+
+package SystemsEngineering {    
+	generateEmfaticMetaModelFile(metamodelPackages: Customer Solution Endeavor)     
+	generateMetaModelStructuralViewByPackages(
+		filename: "Metamodels"
+		Monochrome=true
+		LineType=CurveLineLength=Short
+		metamodelPackages: Customer Solution Endeavor
+	) 
+	generateMetaModelStructuralViewByPackages(
+		filename: "MetamodelsWithPackage"
+		Monochrome=true
+		showPackage LineType=Curve
+		metamodelPackages: Customer Solution Endeavor
+	)
+	measureComplexity( 
+		filename: "SystemsEngineering"
+		definitionPackages: Customer Solution Endeavor
+	)
+	generateProjectWebPage(
+		title: "Ststext Demo: Systems Engineering"
+		taskPackages: SystemsEngineering
+	)
+}    

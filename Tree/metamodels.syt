@@ -3,4 +3,4 @@ package TreeMetamodels {
 		attr String label
 		part Tree[*] children
 	} 
-} 
+}  

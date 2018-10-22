@@ -11,7 +11,7 @@ package Acceleration {
 		constraintBlock: Acceleration
 	)  
 	runTradeOffAnalysis (  
-		filename:AccelerationTradeoffAnalysis 
+		filename: "AccelerationTradeoffAnalysis"
 		Monochrome=true
 		LineType=Ortho
 		LineLength=Medium
@@ -19,11 +19,11 @@ package Acceleration {
 		objects: data1 data2 data3
 	)
 	measureComplexity(
-		filename: AccelerationModel
+		filename: "AccelerationModel"
 		definitionPackages: AccelerationMetamodels AccelerationObjects
 	)	
 	generateProjectWebPage(
 		title: "Systext Demo: Constraint/Acceleration"
 		taskPackages: Acceleration
-	)
+	) 
 }

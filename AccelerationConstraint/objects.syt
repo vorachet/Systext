@@ -4,17 +4,17 @@ import AccelerationMetamodels.*
 import AccelerationMetamodels.TestableModel.*		
 	
 package AccelerationObjects {	
-	data1: TestableModel {  
+	inst data1: TestableModel {  
 		initialSpeed = 10      
 		finalSpeed = 12
 		time = 3
 	}
-	data2: TestableModel {
+	inst data2: TestableModel {
 		initialSpeed = 10     
 		finalSpeed = 30
 		time  = 5   
 	}
-	data3: TestableModel {
+	inst data3: TestableModel {
 		initialSpeed = 7     
 		finalSpeed = 110
 		time = 10     

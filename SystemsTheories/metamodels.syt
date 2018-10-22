@@ -1,0 +1,9 @@
+
+package SystemsTheoriesMetamodels {
+	class Subject {
+		ref Contributor[*] contributors
+		part Subject[] subsubjects
+	}
+	class Contributor {
+	}
+}

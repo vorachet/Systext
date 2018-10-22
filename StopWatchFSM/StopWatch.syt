@@ -1,6 +1,30 @@
 package StopWatchFSM {
-	
-	class StopWatch {         
+	 
+	class StopWatch {      
+		state OFF InitialState {     
+			onFunc: turnOn outgoingState: READY   
+		}         
+		state READY {                         
+			onFunc: start outgoingState: RUNNING    
+			onFunc: turnOff outgoingState: OFF 
+			runEntryFuncs: resetDisplay        
+		}                                            
+		state RUNNING {           
+			onFunc: stop outgoingState: STOPPED    
+			onFunc: split outgoingState: PAUSED
+			onFunc: turnOff outgoingState: OFF        
+			runEntryFuncs: ensureTimer syncDisplay 
+		}            
+		state STOPPED { 
+			onFunc: reset outgoingState: READY 
+			onFunc: turnOff outgoingState: OFF 
+			runEntryFuncs: stopTimer
+		}  
+		state PAUSED {  
+			onFunc: stop outgoingState: STOPPED 
+			onFunc: unsplit outgoingState: RUNNING
+			runEntryFuncs: freezeDisplay
+		}   
 		func turnOn() {}
 		func turnOff() {}       
 		func resetDisplay() {}        
@@ -13,39 +37,17 @@ package StopWatchFSM {
 		func split() {}                      
 		func unsplit() {}                  
 		func freezeDisplay() {}                  
-		state OFF InitialState {     
-			inputFunc: turnOn outgoingState: READY   
-		}         
-		state READY {                         
-			inputFunc: start outgoingState: RUNNING    
-			inputFunc: turnOff outgoingState: OFF 
-			runEntryFuncs: resetDisplay        
-		}                                            
-		state RUNNING {           
-			inputFunc: stop outgoingState: STOPPED    
-			inputFunc: split outgoingState: PAUSED
-			inputFunc: turnOff outgoingState: OFF        
-			runEntryFuncs: ensureTimer syncDisplay 
-		}          
-		state STOPPED {
-			inputFunc: reset outgoingState: READY 
-			inputFunc: turnOff outgoingState: OFF
-			runEntryFuncs: stopTimer
-		}  
-		state PAUSED {  
-			inputFunc: stop outgoingState: STOPPED 
-			inputFunc: unsplit outgoingState: RUNNING
-			inputFunc: turnOff outgoingState: OFF
-			runEntryFuncs: freezeDisplay
-		}
 	}
 	
 	generateStateDiagram(Monochrome=true LineType=Curve metamodel: StopWatch )
+	
 	generateStateTransitionTable(Monochrome=true metamodel: StopWatch )	
+	
 	measureComplexity(
-		filename: StopWatch
+		filename: "StopWatch"
 		definitionPackages: StopWatchFSM
 	)
+	
 	generateProjectWebPage(
 		title: "Systext Demo: FSM/StopWatch"
 		taskPackages: StopWatchFSM  

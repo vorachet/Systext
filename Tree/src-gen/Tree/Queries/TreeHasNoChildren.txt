@@ -1,0 +1,4 @@
+# TreeHasNoChildren:TreeObjects->Tree->children.sizeIsEqual(0)
+Plant:Tree
+Fish:Tree
+Mammal:Tree

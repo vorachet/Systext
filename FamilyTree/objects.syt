@@ -4,15 +4,24 @@ import FamilyTreeMetamodels.*
 import FamilyTreeMetamodels.Member.*
       
 package FamilyTreeObjects {
-	Joe:Member  
-	Marry:Member {ref:kids{John Anna} ref:mate{Joe}}
-	John: Member {ref:kids{Nancy Linda} ref:mate{Susan}} 
-	Nancy: Member
-	Linda: Member
-	James: Member
-	Anna: Member {ref:kids{Oliver Robert Jacob} ref:mate{James}}
-	Oliver: Member
-	Robert: Member
-	Jacob: Member
-	Susan: Member 
+	inst Joe:Member  
+	inst Marry:Member {
+		ref:kids: John Anna
+		ref:mate: Joe
+	}
+	inst John: Member {
+		ref:kids: Nancy Linda
+		ref:mate: Susan
+	} 
+	inst Nancy: Member
+	inst Linda: Member
+	inst James: Member
+	inst Anna: Member {
+		ref:kids: Oliver Robert Jacob
+		ref:mate: James
+	}
+	inst Oliver: Member
+	inst Robert: Member
+	inst Jacob: Member 
+	inst Susan: Member 
 }	            

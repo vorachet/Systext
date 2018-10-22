@@ -1,0 +1,35 @@
+package Systext {
+	class Entity {
+		attr String name
+		part Wheel[4] wheels
+	}
+	class Wheel {
+		  
+	}  
+	e:Entity import Entity.* {
+		name = "myEntity"  
+		wheels {w1 w2 w3 w4}     
+	}  
+	          
+	w1:Wheel import Wheel.*
+	w2:Wheel import Wheel.*
+	w3:Wheel import Wheel.*
+	w4:Wheel import Wheel.*
+	
+	generateMetaModelStructuralView(
+		filename: "Entity"
+		Monochrome=true
+		packages: Systext
+	)
+	
+	generateObjectStructuralView(
+		filename: "Entity"
+		Monochrome=true
+		packages: Systext
+	)
+	
+	generateProjectWebPage(
+		title: "Entity"
+		taskPackages: Systext
+	)
+}

@@ -1,0 +1,37 @@
+include "../metamodels/metamodels.syt"
+
+import Solution.Requirement
+
+package MyRequirementsManagementTransformations {
+	m2t ReqModelToMarkdownReqSpec = M2TTransformation(outputFileExtension: "md"){
+		beforeText: ""
+		afterText: ""  
+		template: {
+			metamodel: Requirement   
+			text: "# %id% \n%text% \n\n%requirements%"
+			varTemplate: {
+				varName: "%requirements%"
+				beforeText: "#" 
+				repeatBeforeText=true    
+				afterText: ""
+				joinText: ""
+			}
+		}
+	} 
+	
+	m2t ReqModelToHTMLReqSpec = M2TTransformation(outputFileExtension: "html"){
+		beforeText: ""
+		afterText: ""  
+		template: {
+			metamodel: Requirement   
+			text: "<h1> %id% </h1> \n<p> %text% </p> \n %requirements%"
+			varTemplate: {
+				varName: "%requirements%"
+				beforeText: "<h2>" 
+				repeatBeforeText=true    
+				afterText: "</h2>"
+				joinText: ""
+			}
+		}
+	} 
+}

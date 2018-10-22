@@ -18,6 +18,11 @@ c.id = "C";
 c.name = "C";
 c.i = 2;
 
+var d = new Column();
+d.id = "D";
+d.name = "D";
+d.i = 3;
+
 var a1 = new Cell();
 a1.id = "a1";
 a1.name = "A1";
@@ -48,13 +53,21 @@ c3.name = "C3";
 c3.r = 0;
 
 c3.c = c; 
+var d1 = new Cell();
+d1.id = "d1";
+d1.name = "";
+d1.r = 0;
+
+d1.c = d; 
 t1.columns.add(a); 
 t1.columns.add(b); 
 t1.columns.add(c); 
+t1.columns.add(d); 
 t1.cells.add(a1); 
 t1.cells.add(b1); 
 t1.cells.add(c1); 
 t1.cells.add(c2); 
 t1.cells.add(c3); 
+t1.cells.add(d1); 
 
 "Done".println();

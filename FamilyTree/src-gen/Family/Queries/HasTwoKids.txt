@@ -1,0 +1,3 @@
+# HasTwoKids:FamilyTreeObjects->Member->kids.sizeIsEqual(2)
+John:Member
+Marry:Member

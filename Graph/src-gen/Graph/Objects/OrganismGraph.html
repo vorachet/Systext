@@ -25,6 +25,8 @@
 				{id: 'Mammal', label: 'Mammal', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
 				    
 				{id: 'Fish', label: 'Fish', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
+				    
+				{id: 'UnnamedNode', label: '', color: 'grey', font: {color: 'white', face: 'times', bold: true}},   
 				 ]);
 				var edges = new vis.DataSet([   
 				{from: 'Plant', to: 'Organism', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
@@ -34,6 +36,8 @@
 				{from: 'Mammal', to: 'Animal', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
 				  
 				{from: 'Fish', to: 'Animal', arrows:'to', label: 'isA', font: {face: 'times', bold: true}},
+				  
+				{from: 'UnnamedNode', to: 'Animal', arrows:'to', label: '', font: {face: 'times', bold: true}},
 				 ]); 
 				
   						var container = document.getElementById('graph');

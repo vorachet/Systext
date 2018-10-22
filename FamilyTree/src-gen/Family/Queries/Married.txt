@@ -1,0 +1,4 @@
+# Married:FamilyTreeObjects->Member->mate.sizeIsGreaterThan(0)
+John:Member
+Anna:Member
+Marry:Member

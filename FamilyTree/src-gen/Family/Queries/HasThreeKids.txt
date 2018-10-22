@@ -1,0 +1,2 @@
+# HasThreeKids:FamilyTreeObjects->Member->kids.sizeIsEqual(3)
+Anna:Member

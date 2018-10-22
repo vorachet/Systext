@@ -1,0 +1,3 @@
+# TreeHasOneOrMoreChildren:TreeObjects->Tree->children.sizeIsGreaterThan(1)
+Animal:Tree
+Organism:Tree
